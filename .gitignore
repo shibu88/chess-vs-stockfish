@@ -1,0 +1,8 @@
+# Dependencies and test output (recreated by npm install / the tests)
+node_modules/
+test-results/
+playwright-report/
+
+# Local-only: Claude Code settings and planning notes (contain local paths)
+.claude/
+tasks/

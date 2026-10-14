@@ -1,0 +1,3 @@
+# Keep third-party files byte-for-byte (their SHA-256 hashes are in THIRD_PARTY_NOTICES.md).
+engine/** -text
+lib/** -text

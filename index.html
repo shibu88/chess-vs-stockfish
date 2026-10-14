@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Security: only allow this site's own files to load (no external scripts, styles or connections). -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; worker-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chess vs Stockfish</title>
+  <meta name="description" content="Play chess against the Stockfish engine, running entirely in your browser.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Chess vs Stockfish</h1>
+  </header>
+
+  <main class="layout">
+    <section class="board-area" aria-label="Game board">
+      <!-- Clocks: the opponent's above the board, yours below (main.js fills them in). -->
+      <div id="clock-top" class="clock"><span class="clock-name"></span><span class="clock-time" role="timer"></span></div>
+
+      <div class="board-wrap">
+        <div id="board" class="board" aria-label="Chessboard"></div>
+
+        <!-- Pawn promotion picker (shown over the board when needed) -->
+        <div id="promotion" class="promotion" role="dialog" aria-label="Choose promotion piece" hidden>
+          <p>Promote to:</p>
+          <div class="promotion-choices">
+            <button type="button" data-piece="q" aria-label="Queen"></button>
+            <button type="button" data-piece="r" aria-label="Rook"></button>
+            <button type="button" data-piece="b" aria-label="Bishop"></button>
+            <button type="button" data-piece="n" aria-label="Knight"></button>
+          </div>
+          <button type="button" class="promotion-cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div id="clock-bottom" class="clock"><span class="clock-name"></span><span class="clock-time" role="timer"></span></div>
+    </section>
+
+    <aside class="panel">
+      <p id="status" class="status" role="status" aria-live="polite">Loading the engine…</p>
+      <p id="thinking" class="thinking" hidden><span class="spinner" aria-hidden="true"></span> Computer is thinking…</p>
+      <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+
+      <div class="game-actions">
+        <button type="button" id="offer-draw">Offer draw</button>
+        <button type="button" id="resign" class="danger">Resign</button>
+      </div>
+      <div id="resign-confirm" class="resign-confirm" role="alertdialog" aria-label="Confirm resignation" hidden>
+        <p>Resign this game? Stockfish will be declared the winner.</p>
+        <div class="buttons">
+          <button type="button" id="resign-yes" class="danger">Yes, resign</button>
+          <button type="button" id="resign-cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div id="engine-error" class="engine-error" role="alert" hidden>
+        <p id="engine-error-text"></p>
+        <p class="hint">Make sure the site is opened through a local web server (an address starting with
+          <code>http://</code>, not <code>file://</code>), and that the files in the <code>engine/</code> folder exist. Then try again.</p>
+        <button type="button" id="retry-engine">Retry loading engine</button>
+      </div>
+
+      <div class="controls">
+        <label>Difficulty
+          <select id="difficulty">
+            <option value="beginner">Beginner</option>
+            <option value="casual">Casual</option>
+            <option value="intermediate" selected>Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="master">Master</option>
+            <option value="full">GrandMaster</option>
+          </select>
+        </label>
+        <label>Play as
+          <select id="color">
+            <option value="w" selected>White</option>
+            <option value="b">Black</option>
+          </select>
+        </label>
+        <label>Time control
+          <select id="time-control">
+            <option value="3">3 min per player</option>
+            <option value="5">5 min per player</option>
+            <option value="10" selected>10 min per player</option>
+            <option value="15">15 min per player</option>
+          </select>
+        </label>
+        <div class="buttons">
+          <button type="button" id="new-game" class="primary">New Game</button>
+          <button type="button" id="restart">Restart</button>
+        </div>
+        <p class="hint">New Game uses the colour and time control chosen above. Restart replays the current game's colour and time control from the start.</p>
+      </div>
+
+      <details id="history-panel" class="history-panel" open>
+        <summary>Move history</summary>
+        <ol id="history" class="history"></ol>
+      </details>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    Rules by <a href="https://github.com/jhlywa/chess.js">chess.js</a> (BSD-2-Clause).
+    Engine: <a href="https://github.com/nmrugg/stockfish.js">Stockfish.js 18</a>, based on
+    <a href="https://github.com/official-stockfish/Stockfish">Stockfish</a> (GPLv3,
+    <a href="engine/Copying.txt">licence</a>).
+    See <a href="THIRD_PARTY_NOTICES.md">third-party notices</a>. The engine runs entirely in your browser.
+  </footer>
+</body>
+</html>

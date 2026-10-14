@@ -1,0 +1,14 @@
+{
+  "name": "browser-chess-stockfish",
+  "version": "1.0.0",
+  "description": "Play chess against Stockfish in the browser. Static site; npm is only used for tests.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python -m http.server 8000 --bind 127.0.0.1",
+    "test": "node --test --test-force-exit tests/unit.test.mjs tests/engine.test.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}
