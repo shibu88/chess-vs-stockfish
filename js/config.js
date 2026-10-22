@@ -21,6 +21,7 @@ export const DIFFICULTY = {
   casual:       { label: 'Casual',                  elo: 1400, skill: 20, depth: null, movetime: 300 },
   intermediate: { label: 'Intermediate',            elo: 1800, skill: 20, depth: null, movetime: 500 },
   advanced:     { label: 'Advanced',                elo: 2200, skill: 20, depth: null, movetime: 800 },
+  hard:         { label: 'Hard',                    elo: 2400, skill: 20, depth: null, movetime: 900 },
   master:       { label: 'Master',                  elo: 2600, skill: 20, depth: null, movetime: 1000 },
   full:         { label: 'GrandMaster', elo: null, skill: 20, depth: null, movetime: 3000 },
 };

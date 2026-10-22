@@ -42,10 +42,10 @@ test('buildStrengthCommands sets or clears every strength limit', () => {
   assert.throws(() => buildStrengthCommands('impossible'));
 });
 
-test('six difficulty levels get stronger in order', () => {
+test('seven difficulty levels get stronger in order', () => {
   const levels = Object.values(DIFFICULTY);
   assert.deepEqual(levels.map((l) => l.label),
-    ['Beginner', 'Casual', 'Intermediate', 'Advanced', 'Master', 'GrandMaster']);
+    ['Beginner', 'Casual', 'Intermediate', 'Advanced', 'Hard', 'Master', 'GrandMaster']);
   // Elo-limited levels sit between Beginner (Skill 0) and GrandMaster (no limits),
   // within the engine's allowed UCI_Elo range.
   const elos = levels.slice(1, -1).map((l) => l.elo);

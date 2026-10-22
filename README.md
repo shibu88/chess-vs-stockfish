@@ -12,7 +12,7 @@ the engine runs inside each visitor's browser.
 - The selected square, the last move and a king in check are all highlighted.
 - Play as White or Black (the board flips; the computer moves first when you're Black).
 - Every rule comes from chess.js: castling, en passant, promotion (choose Q/R/B/N, or cancel), check, checkmate, stalemate, threefold repetition, insufficient material and the 50-move rule.
-- Six difficulty levels: Beginner, Casual, Intermediate, Advanced, Master, GrandMaster.
+- Seven difficulty levels: Beginner, Casual, Intermediate, Advanced, Hard, Master, GrandMaster.
 - Chess clock: 3, 5, 10 or 15 minutes per player (see [Chess clock](#chess-clock)).
 - Offer draw (Stockfish decides with a documented rule, see [Draw offers](#draw-offers)) and Resign (with a confirmation step).
 - Green marble board with a–h / 1–8 coordinates. h1 and a8 are light squares, as on a real board.
@@ -101,6 +101,7 @@ Defined in `js/config.js`. The engine stops at whichever limit it reaches first.
 | Casual | `UCI_Elo` 1400 | no limit | 300 ms |
 | Intermediate (default) | `UCI_Elo` 1800 | no limit | 500 ms |
 | Advanced | `UCI_Elo` 2200 | no limit | 800 ms |
+| Hard | `UCI_Elo` 2400 | no limit | 900 ms |
 | Master | `UCI_Elo` 2600 | no limit | 1000 ms |
 | GrandMaster | none (`UCI_LimitStrength` off, `Skill Level` 20) | no limit | 3000 ms |
 
