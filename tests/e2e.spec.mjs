@@ -109,7 +109,7 @@ test('playing as Black: board flips and the computer opens', async ({ page }) =>
   await expect(historyMoves(page).nth(2)).not.toHaveText('', { timeout: 15000 });
 });
 
-for (const level of ['beginner', 'casual', 'intermediate', 'advanced', 'master', 'full']) {
+for (const level of ['beginner', 'casual', 'intermediate', 'advanced', 'hard', 'master', 'full']) {
   test(`difficulty "${level}" plays legal replies`, async ({ page }) => {
     await openGame(page, { difficulty: level });
     const t0 = Date.now();
